@@ -1,0 +1,1 @@
+export default function Destinations() { return <div className="p-6">Destinationen (Demo)</div> }
