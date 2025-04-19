@@ -1,3 +1,3 @@
-# Workation World Prototype
+# Workation World
 
-React + Tailwind Projekt für einen klickbaren Prototypen.
+Ein Prototyp für die Workation-Plattform.
