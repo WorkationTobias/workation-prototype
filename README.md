@@ -1,3 +1,3 @@
-# Workation World
+# Workation World Prototyp
 
-Ein Prototyp für die Workation-Plattform.
+Vercel-kompatibles Next.js-Projekt mit Tailwind CSS.

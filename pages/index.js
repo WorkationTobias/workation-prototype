@@ -3,12 +3,12 @@ import Head from 'next/head'
 
 export default function Home() {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif' }}>
+    <div className="p-8 bg-white min-h-screen font-sans">
       <Head>
         <title>Workation World</title>
       </Head>
-      <h1 style={{ fontSize: '2rem', color: '#1e3a8a' }}>Workation World</h1>
-      <p>Willkommen beim klickbaren Prototypen! Die Startseite funktioniert 🎉</p>
+      <h1 className="text-3xl font-bold text-blue-900 mb-4">Workation World</h1>
+      <p className="text-gray-700">Willkommen beim klickbaren Prototypen für deine Workation-Plattform!</p>
     </div>
   )
 }
