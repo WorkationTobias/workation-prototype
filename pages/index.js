@@ -1,131 +1,120 @@
 import Head from "next/head"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("dashboard")
+  const [activeTab, setActiveTab] = useState("antrag")
+  const [step, setStep] = useState(1)
   const [form, setForm] = useState({
-    vorname: "",
-    nachname: "",
-    reiseziel: "",
+    land: "",
     start: "",
     ende: "",
-    arbeitstage: 0
+    arbeitstage: 0,
+    vertrag: false,
+    familie: false,
+    sensibel: [],
+    steuerpflicht: false,
+    bankkonto: false,
+    tageVorher: 0,
+    bestaetigung: false
   })
+  const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
+    const { name, value, type, checked } = e.target
+    if (type === "checkbox") {
+      if (name === "sensibel") {
+        setForm((prev) => {
+          const values = new Set(prev.sensibel)
+          if (checked) values.add(value)
+          else values.delete(value)
+          return { ...prev, sensibel: Array.from(values) }
+        })
+      } else {
+        setForm((prev) => ({ ...prev, [name]: checked }))
+      }
+    } else if (type === "radio") {
+      const parsed = value === "true"
+      setForm((prev) => ({ ...prev, [name]: parsed }))
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }))
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert("Antrag erfolgreich eingereicht! (Demo)")
+    setSubmitted(true)
+    setActiveTab("meine-anfragen")
   }
 
-  const applications = [
-    {
-      id: "W-ZF76U",
-      from: { code: "de", name: "Deutschland" },
-      to: { code: "hr", name: "Kroatien" },
-      days: 9,
-      status: "Genehmigt",
-      risk: "Kein Risiko"
-    },
-    {
-      id: "W-BX82K",
-      from: { code: "de", name: "Deutschland" },
-      to: { code: "es", name: "Spanien" },
-      days: 10,
-      status: "In Prüfung",
-      risk: "Wird geprüft"
-    }
-  ]
-
-  const flagUrl = (code) => `https://flagcdn.com/w40/${code.toLowerCase()}.png`
-
   return (
-    <div className="p-6 bg-white min-h-screen font-sans">
-      <Head>
-        <title>Workation World</title>
-      </Head>
-
-      <h1 className="text-3xl font-bold text-blue-900 mb-6">Workation World</h1>
-
-      <div className="flex space-x-4 mb-6">
-        <button onClick={() => setActiveTab("dashboard")} className={`px-4 py-2 rounded-full border ${activeTab === "dashboard" ? "bg-blue-900 text-white" : "border-blue-900 text-blue-900"}`}>Dashboard</button>
-        <button onClick={() => setActiveTab("destinationen")} className={`px-4 py-2 rounded-full border ${activeTab === "destinationen" ? "bg-blue-900 text-white" : "border-blue-900 text-blue-900"}`}>Destinationen</button>
-        <button onClick={() => setActiveTab("admin")} className={`px-4 py-2 rounded-full border ${activeTab === "admin" ? "bg-blue-900 text-white" : "border-blue-900 text-blue-900"}`}>Admin</button>
-        <button onClick={() => setActiveTab("antrag")} className={`px-4 py-2 rounded-full border ${activeTab === "antrag" ? "bg-blue-900 text-white" : "border-blue-900 text-blue-900"}`}>Antrag</button>
-      </div>
-
-      {activeTab === "dashboard" && (
-        <>
-          <h2 className="text-xl font-semibold mb-4">Meine Workation-Anträge</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {applications.map((app) => (
-              <div key={app.id} className="border rounded-xl p-4 shadow-md">
-                <p className="text-sm text-gray-500">Antrag: {app.id}</p>
-                <p className="font-medium flex items-center space-x-2">
-                  <img src={flagUrl(app.from.code)} alt={app.from.name} className="w-6 h-auto inline border border-gray-300" />
-                  <span>{app.from.name}</span>
-                  <span>→</span>
-                  <img src={flagUrl(app.to.code)} alt={app.to.name} className="w-6 h-auto inline border border-gray-300" />
-                  <span>{app.to.name}</span>
-                </p>
-                <p>{app.days} Arbeitstage</p>
-                <p>Status: <strong>{app.status}</strong></p>
-                <p>Risiko: {app.risk}</p>
-                <button className="mt-2 text-blue-900 underline">Details</button>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-
-      {activeTab === "antrag" && (
-        <div className="max-w-xl">
-          <h2 className="text-xl font-semibold mb-4">Neuen Antrag stellen</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium">Vorname</label>
-              <input name="vorname" type="text" value={form.vorname} onChange={handleChange} className="w-full border rounded px-3 py-2" required />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Nachname</label>
-              <input name="nachname" type="text" value={form.nachname} onChange={handleChange} className="w-full border rounded px-3 py-2" required />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Reiseziel</label>
-              <input name="reiseziel" type="text" value={form.reiseziel} onChange={handleChange} className="w-full border rounded px-3 py-2" required />
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <label className="block text-sm font-medium">Startdatum</label>
-                <input name="start" type="date" value={form.start} onChange={handleChange} className="w-full border rounded px-3 py-2" required />
-              </div>
-              <div className="flex-1">
-                <label className="block text-sm font-medium">Enddatum</label>
-                <input name="ende" type="date" value={form.ende} onChange={handleChange} className="w-full border rounded px-3 py-2" required />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Arbeitstage</label>
-              <input name="arbeitstage" type="number" min="1" value={form.arbeitstage} onChange={handleChange} className="w-full border rounded px-3 py-2" required />
-            </div>
-            <button type="submit" className="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">
-              Antrag einreichen
-            </button>
-          </form>
+    <div className="flex min-h-screen">
+      <aside className="w-64 bg-white shadow-md p-6 space-y-4">
+        <h1 className="text-2xl font-bold text-blue-900 mb-6">Workation World</h1>
+        <button onClick={() => setActiveTab("antrag")}>Antrag stellen</button>
+        <button onClick={() => setActiveTab("meine-anfragen")}>Meine Anfragen</button>
+        <button onClick={() => setActiveTab("profil")}>Mein Profil</button>
+        <button onClick={() => setActiveTab("policy")}>Workation Policy</button>
+        <div className="border-t pt-4">
+          <button onClick={() => setActiveTab("destinationen")}>Meine Workation-Destinationen</button>
         </div>
-      )}
+      </aside>
 
-      {activeTab === "destinationen" && (
-        <p className="text-gray-600">Destinationen (Demo kommt bald)</p>
-      )}
+      <main className="flex-1 bg-gray-50 p-8">
+        <div className="flex justify-end items-center space-x-4 mb-6">
+          <select className="border px-2 py-1 rounded">
+            <option>DE</option>
+            <option>EN</option>
+          </select>
+          <div className="bg-blue-900 text-white px-3 py-1 rounded-full">TB – Tobias Benz</div>
+        </div>
 
-      {activeTab === "admin" && (
-        <p className="text-gray-600">Admin-Bereich (Demo kommt bald)</p>
-      )}
+        {activeTab === "antrag" && (
+          <div className="max-w-2xl">
+            <h2 className="text-xl font-semibold mb-4">Ihre Reiseanfrage</h2>
+            <div className="flex space-x-4 mb-6">
+              <span className={step >= 1 ? "font-semibold text-blue-900" : "text-gray-400"}>Reisedaten</span>
+              <span className={step >= 2 ? "font-semibold text-blue-900" : "text-gray-400"}>Reisedetails</span>
+              <span className={step >= 3 ? "font-semibold text-blue-900" : "text-gray-400"}>Allgemeine Angaben</span>
+              <span className={step === 4 ? "font-semibold text-blue-900" : "text-gray-400"}>Zusammenfassung</span>
+            </div>
+
+            {step === 4 && (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <h3>Zusammenfassung</h3>
+                <p><strong>Land:</strong> {form.land}</p>
+                <p><strong>Dauer:</strong> {form.start} bis {form.ende}</p>
+                <p><strong>Arbeitstage:</strong> {form.arbeitstage}</p>
+                <p><strong>Vertraglich tätig:</strong> {form.vertrag ? "Ja" : "Nein"}</p>
+                <p><strong>Familie vor Ort:</strong> {form.familie ? "Ja" : "Nein"}</p>
+                <p><strong>Daten-Sensibilität:</strong> {form.sensibel.join(", ")}</p>
+                <p><strong>Steuerpflicht:</strong> {form.steuerpflicht ? "Ja" : "Nein"}</p>
+                <p><strong>Bankkonto:</strong> {form.bankkonto ? "Ja" : "Nein"}</p>
+                <p><strong>Vorherige Aufenthaltstage:</strong> {form.tageVorher}</p>
+                <label><input type="checkbox" name="bestaetigung" checked={form.bestaetigung} onChange={handleChange} /> Ich bestätige die Angaben</label>
+                <button type="submit" className="btn">Absenden</button>
+              </form>
+            )}
+          </div>
+        )}
+
+        {activeTab === "meine-anfragen" && submitted && (
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Meine Workation-Anfragen</h2>
+            <div className="bg-white rounded shadow p-4">
+              <p>Ihr Antrag auf Workation nach {form.land} vom {form.start} bis {form.ende} wurde eingereicht.</p>
+              <div className="mt-4">
+                <h3 className="font-semibold">Status</h3>
+                <p className="text-yellow-600">In Bearbeitung</p>
+                <h4 className="mt-4 font-semibold">Genehmigungen</h4>
+                <ul className="space-y-2">
+                  <li><strong>Manager-Genehmigung:</strong> <span className="text-yellow-600">Ausstehend</span></li>
+                  <li><strong>HR-Genehmigung:</strong> <span className="text-yellow-600">Ausstehend</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+      </main>
     </div>
   )
 }
