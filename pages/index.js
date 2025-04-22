@@ -75,13 +75,13 @@ export default function Home() {
       <aside className="w-64 bg-white shadow-md p-6 space-y-2">
         <h1 className="text-2xl font-bold text-blue-900 mb-6">Workation World</h1>
         <div className="space-y-2">
-          <button onClick={() => setActiveTab("antrag-formular")} className="block w-full text-left">Antrag stellen</button>
-          <button onClick={() => setActiveTab("meine-anfragen")} className="block w-full text-left">Meine Anfragen</button>
-          <hr className="my-2 border-gray-300" />
-          <button onClick={() => setActiveTab("profil")} className="block w-full text-left">Mein Profil</button>
-          <button onClick={() => setActiveTab("policy")} className="block w-full text-left">Workation Policy</button>
-          <hr className="my-4 border-gray-300" />
-          <button onClick={() => setActiveTab("destinationen")} className="block w-full text-left">Meine Workation-Destinationen</button>
+          <button onClick={() => setActiveTab("antrag-formular")}>Antrag stellen</button>
+          <button onClick={() => setActiveTab("meine-anfragen")}>Meine Anfragen</button>
+          <hr className="my-2" />
+          <button onClick={() => setActiveTab("profil")}>Mein Profil</button>
+          <button onClick={() => setActiveTab("policy")}>Workation Policy</button>
+          <hr className="my-4" />
+          <button onClick={() => setActiveTab("destinationen")}>Meine Workation-Destinationen</button>
         </div>
       </aside>
 
@@ -98,15 +98,30 @@ export default function Home() {
           <div className="max-w-2xl">
             <h2 className="text-xl font-semibold mb-4">Workation-Antrag stellen</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <select name="land" value={form.land} onChange={handleChange} className="w-full border px-2 py-1">
-                <option value="">Zielland wählen</option>
-                {destinationen.map((land) => (
-                  <option key={land} value={land}>{land}</option>
-                ))}
-              </select>
-              <input name="start" type="date" placeholder="Ankunft" value={form.start} onChange={handleChange} className="w-full border px-2 py-1" />
-              <input name="ende" type="date" placeholder="Abreise" value={form.ende} onChange={handleChange} className="w-full border px-2 py-1" />
-              <input name="arbeitstage" type="number" placeholder="Wie viele Tage werden Sie arbeiten?" max={calculateWeekdays(form.start, form.ende)} value={form.arbeitstage} onChange={handleChange} className="w-full border px-2 py-1" />
+              <div>
+                <label className="block mb-1">Zielland</label>
+                <select name="land" value={form.land} onChange={handleChange} className="w-full border px-2 py-1">
+                  <option value="">Zielland wählen</option>
+                  {destinationen.map((land) => (
+                    <option key={land} value={land}>{land}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block mb-1">Ankunft</label>
+                <input name="start" type="date" value={form.start} onChange={handleChange} className="w-full border px-2 py-1" />
+              </div>
+
+              <div>
+                <label className="block mb-1">Abreise</label>
+                <input name="ende" type="date" value={form.ende} onChange={handleChange} className="w-full border px-2 py-1" />
+              </div>
+
+              <div>
+                <label className="block mb-1">Gewünschte Arbeitstage</label>
+                <input name="arbeitstage" type="number" max={calculateWeekdays(form.start, form.ende)} value={form.arbeitstage} onChange={handleChange} className="w-full border px-2 py-1" />
+              </div>
 
               <div>
                 <label className="block mb-1">Sind Sie im Zielland steuerpflichtig?</label>
