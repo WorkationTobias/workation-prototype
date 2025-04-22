@@ -106,7 +106,25 @@ export default function Home() {
     "Spanien", "Italien", "Frankreich", "Griechenland", "Türkei", "Deutschland", "Kroatien", "Österreich", "Schweiz", "Portugal", "Niederlande", "Belgien", "Polen", "Tschechien", "Ungarn", "Dänemark", "Schweden", "Norwegen", "Finnland", "Irland", "Großbritannien", "USA", "Kanada", "Mexiko", "Brasilien", "Thailand", "Indonesien", "Japan", "China", "Australien", "Neuseeland", "Marokko", "Ägypten", "Südafrika"
   ]
 
-  return <div>... // (Inhalt wie gehabt, später wieder einfügen)</div>
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Workation World</h1>
+      <div className="flex space-x-4 border-b pb-2 mb-4">
+        <button onClick={() => setActiveTab("antrag")}>Antrag stellen</button>
+        <button onClick={() => setActiveTab("meine-anfragen")}>Meine Anfragen</button>
+        <button onClick={() => setActiveTab("mein-profil")}>Mein Profil</button>
+        <button onClick={() => setActiveTab("policy")}>Workation Policy</button>
+        <button onClick={() => setActiveTab("destinationen")}>Meine Workation-Destinationen</button>
+      </div>
+
+      {/* Inhalte folgen abhängig vom activeTab */}
+      {activeTab === "antrag" && <div>Workation-Antrag Formular hier</div>}
+      {activeTab === "meine-anfragen" && <div>Meine Anfragen Tabelle hier</div>}
+      {activeTab === "mein-profil" && <div>Mein Profil Felder hier</div>}
+      {activeTab === "policy" && <div>Workation Policy Info hier</div>}
+      {activeTab === "destinationen" && <div>Liste der Destinationen hier</div>}
+    </div>
+  )
 }
 
 function calculateWeekdays(startDateStr, endDateStr) {
