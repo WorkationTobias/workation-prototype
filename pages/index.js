@@ -39,7 +39,7 @@ export default function Home() {
   ])
 
   const [destinationenDetails] = useState([
-    { name: "Robinson Club", info: "Mehr als 400 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "https://www.robinson.com/fileadmin/media/_processed_/b/f/csm_qr58_13610_Hauptpool_381a397ac3.jpg" },
+    { name: "Robinson Club", info: "Infrastruktur und technische Ausstattung: 4 Sterne, Unterkunft und Komfort: 5 Sterne, Freizeit- und Erholungsangebote: 5 Sterne, Nachhaltigkeit und Umweltbewusstsein: 3 Sterne, Service und Betreuung: 5 Sterne, rabatt: "10% Nachlass nutzen", bild: "https://www.robinson.com/fileadmin/media/_processed_/b/f/csm_qr58_13610_Hauptpool_381a397ac3.jpg" },
     { name: "Wyndham Resorts", info: "Mehr als 300 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "https://www.wyndhamhotels.com/content/dam/property-images/en-us/hr/au/others/torquay/16284/16284_pool%2014.jpg?downsize=700:*" },
     { name: "Valamar", info: "Poreč", rabatt: "10% Nachlass nutzen", bild: "https://multimedia.valamar.com/mediagallery-dxp-production/Objekti_Hvar_Amicor_V4_gallery_amicor-resort-pools-sport-airview.jpg" }
   ])
