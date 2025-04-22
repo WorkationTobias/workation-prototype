@@ -43,20 +43,22 @@ export default function Home() {
       name: "Robinson Club",
       info: "Mehr als 400 Reiseziele",
       rabatt: "10% Nachlass nutzen",
-      bild: "/flags/1.png",
+      bild: "https://www.robinson.com/fileadmin/media/_processed_/b/f/csm_qr58_13610_Hauptpool_381a397ac3.jpg",
       scoring: [4, 5, 5, 3, 5]
     },
     {
       name: "Wyndham Resorts",
       info: "Mehr als 300 Reiseziele",
       rabatt: "10% Nachlass nutzen",
-      bild: "/flags/2.png"
+      bild: "https://www.wyndhamhotels.com/content/dam/property-images/en-us/hr/au/others/torquay/16284/16284_pool%2014.jpg?downsize=700:*,
+      scoring: [3, 2, 4, 4, 4]
     },
     {
       name: "Valamar",
       info: "Poreč",
       rabatt: "10% Nachlass nutzen",
-      bild: "/flags/3.png"
+      bild: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm0oK4lpV_M1fmHFw5v6T9VFKao2elx77kzg&s",
+      scoring: [5, 5, 5, 5, 5]
     }
   ])
 
