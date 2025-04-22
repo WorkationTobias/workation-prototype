@@ -68,6 +68,8 @@ export default function Home() {
     setActiveTab("meine-anfragen")
   }
 
+  const destinationen = ["Spanien", "Italien", "Frankreich", "Griechenland", "Türkei", "Deutschland", "Kroatien", "Österreich", "Schweiz", "Portugal", "Niederlande", "Belgien", "Polen", "Tschechien", "Ungarn", "Dänemark", "Schweden", "Norwegen", "Finnland", "Irland", "Großbritannien", "USA", "Kanada", "Mexiko", "Brasilien", "Thailand", "Indonesien", "Japan", "China", "Australien", "Neuseeland", "Marokko", "Ägypten", "Südafrika"]
+
   return (
     <div className="flex min-h-screen">
       <aside className="w-64 bg-white shadow-md p-6 space-y-2">
@@ -96,10 +98,15 @@ export default function Home() {
           <div className="max-w-2xl">
             <h2 className="text-xl font-semibold mb-4">Workation-Antrag stellen</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input name="land" placeholder="Zielland" value={form.land} onChange={handleChange} className="w-full border px-2 py-1" />
-              <input name="start" type="date" value={form.start} onChange={handleChange} className="w-full border px-2 py-1" />
-              <input name="ende" type="date" value={form.ende} onChange={handleChange} className="w-full border px-2 py-1" />
-              <input name="arbeitstage" type="number" placeholder="Arbeitstage" value={form.arbeitstage} onChange={handleChange} className="w-full border px-2 py-1" />
+              <select name="land" value={form.land} onChange={handleChange} className="w-full border px-2 py-1">
+                <option value="">Zielland wählen</option>
+                {destinationen.map((land) => (
+                  <option key={land} value={land}>{land}</option>
+                ))}
+              </select>
+              <input name="start" type="date" placeholder="Ankunft" value={form.start} onChange={handleChange} className="w-full border px-2 py-1" />
+              <input name="ende" type="date" placeholder="Abreise" value={form.ende} onChange={handleChange} className="w-full border px-2 py-1" />
+              <input name="arbeitstage" type="number" placeholder="Wie viele Tage werden Sie arbeiten?" max={calculateWeekdays(form.start, form.ende)} value={form.arbeitstage} onChange={handleChange} className="w-full border px-2 py-1" />
 
               <div>
                 <label className="block mb-1">Sind Sie im Zielland steuerpflichtig?</label>
@@ -170,4 +177,16 @@ export default function Home() {
       </main>
     </div>
   )
+}
+
+function calculateWeekdays(startDateStr, endDateStr) {
+  const start = new Date(startDateStr)
+  const end = new Date(endDateStr)
+  let count = 0
+  while (start <= end) {
+    const day = start.getDay()
+    if (day !== 0 && day !== 6) count++
+    start.setDate(start.getDate() + 1)
+  }
+  return count
 }
