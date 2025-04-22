@@ -1,1 +1,3 @@
-<REPLACE_WITH_FINAL_CANVAS_CODE>
+import Home from "../Home"
+
+export default Home
