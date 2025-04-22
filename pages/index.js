@@ -1,1 +1,1 @@
-<CANVAS_WIRD_SPÄTER_EINGEFÜGT>
+export { default } from "../Home";
