@@ -38,6 +38,30 @@ export default function Home() {
     }
   ])
 
+  const [profil, setProfil] = useState({
+    name: "",
+    staatsangehoerigkeit: "",
+    zweiteStaatsangehoerigkeit: "",
+    geschlecht: "",
+    geburtsdatum: "",
+    geburtsort: "",
+    strasse: "",
+    plz: "",
+    stadt: "",
+    land: "",
+    lohnabrechnung: "",
+    krankenkasse: "",
+    krankenversicherung: "",
+    svNummer: "",
+    beruf: "",
+    abteilung: "",
+    eintritt: "",
+    vorgesetzte: "",
+    lokaleDienste: "",
+    vollmacht: "",
+    management: ""
+  })
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
     if (type === "checkbox") {
@@ -94,61 +118,91 @@ export default function Home() {
           <div className="bg-blue-900 text-white px-3 py-1 rounded-full">TB – Tobias Benz</div>
         </div>
 
-        {activeTab === "antrag-formular" && (
-          <div className="max-w-2xl">
-            <h2 className="text-xl font-semibold mb-4">Workation-Antrag stellen</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        {activeTab === "profil" && (
+          <div className="max-w-4xl">
+            <h2 className="text-xl font-semibold mb-4">Mein Profil</h2>
+            <div className="bg-white shadow rounded p-4 space-y-6">
               <div>
-                <label className="block mb-1">Zielland</label>
-                <select name="land" value={form.land} onChange={handleChange} className="w-full border px-2 py-1">
-                  <option value="">Zielland wählen</option>
-                  {destinationen.map((land) => (
-                    <option key={land} value={land}>{land}</option>
-                  ))}
-                </select>
+                <h3 className="font-bold text-gray-700 mb-2">Persönliche Daten</h3>
+                <table className="w-full table-auto text-sm">
+                  <tbody>
+                    {Object.entries({
+                      "Vor- und Nachname": "name",
+                      "Staatsangehörigkeit": "staatsangehoerigkeit",
+                      "Zweite Staatsangehörigkeit": "zweiteStaatsangehoerigkeit",
+                      "Geschlecht": "geschlecht",
+                      "Geburtsdatum": "geburtsdatum",
+                      "Geburtsort": "geburtsort"
+                    }).map(([label, key]) => (
+                      <tr key={key} className="border-t">
+                        <td className="py-2 pr-4 font-semibold text-gray-600">{label}</td>
+                        <td><input className="border px-2 py-1 w-full" value={profil[key]} onChange={e => setProfil(p => ({ ...p, [key]: e.target.value }))} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
 
               <div>
-                <label className="block mb-1">Ankunft</label>
-                <input name="start" type="date" value={form.start} onChange={handleChange} className="w-full border px-2 py-1" />
+                <h3 className="font-bold text-gray-700 mb-2">Wohnadresse</h3>
+                <table className="w-full table-auto text-sm">
+                  <tbody>
+                    {Object.entries({
+                      "Strasse und Hausnummer": "strasse",
+                      "Postleitzahl": "plz",
+                      "Stadt": "stadt",
+                      "Land": "land"
+                    }).map(([label, key]) => (
+                      <tr key={key} className="border-t">
+                        <td className="py-2 pr-4 font-semibold text-gray-600">{label}</td>
+                        <td><input className="border px-2 py-1 w-full" value={profil[key]} onChange={e => setProfil(p => ({ ...p, [key]: e.target.value }))} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
 
               <div>
-                <label className="block mb-1">Abreise</label>
-                <input name="ende" type="date" value={form.ende} onChange={handleChange} className="w-full border px-2 py-1" />
+                <h3 className="font-bold text-gray-700 mb-2">Offizielle Informationen</h3>
+                <table className="w-full table-auto text-sm">
+                  <tbody>
+                    {Object.entries({
+                      "Land der Lohnabrechnung": "lohnabrechnung",
+                      "Krankenversicherung": "krankenkasse",
+                      "Öffentliche Krankenversicherung": "krankenversicherung",
+                      "Sozialversicherungsnummer": "svNummer"
+                    }).map(([label, key]) => (
+                      <tr key={key} className="border-t">
+                        <td className="py-2 pr-4 font-semibold text-gray-600">{label}</td>
+                        <td><input className="border px-2 py-1 w-full" value={profil[key]} onChange={e => setProfil(p => ({ ...p, [key]: e.target.value }))} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
 
               <div>
-                <label className="block mb-1">Gewünschte Arbeitstage</label>
-                <input name="arbeitstage" type="number" max={calculateWeekdays(form.start, form.ende)} value={form.arbeitstage} onChange={handleChange} className="w-full border px-2 py-1" />
+                <h3 className="font-bold text-gray-700 mb-2">Jobinformationen</h3>
+                <table className="w-full table-auto text-sm">
+                  <tbody>
+                    {Object.entries({
+                      "Berufsbezeichnung": "beruf",
+                      "Abteilung": "abteilung",
+                      "Eintrittsdatum": "eintritt",
+                      "E-Mail-Adresse der Führungskraft": "vorgesetzte",
+                      "Bietet lokale Dienste an": "lokaleDienste",
+                      "Vollmacht": "vollmacht",
+                      "Oberes Management / Vertrieb / Beschaffung": "management"
+                    }).map(([label, key]) => (
+                      <tr key={key} className="border-t">
+                        <td className="py-2 pr-4 font-semibold text-gray-600">{label}</td>
+                        <td><input className="border px-2 py-1 w-full" value={profil[key]} onChange={e => setProfil(p => ({ ...p, [key]: e.target.value }))} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-
-              <div>
-                <label className="block mb-1">Sind Sie im Zielland steuerpflichtig?</label>
-                <label className="mr-4"><input type="radio" name="steuerpflicht" value="true" checked={form.steuerpflicht === true} onChange={handleChange} /> Ja</label>
-                <label><input type="radio" name="steuerpflicht" value="false" checked={form.steuerpflicht === false} onChange={handleChange} /> Nein</label>
-              </div>
-
-              <div>
-                <label className="block mb-1">Haben Sie im Zielland ein Bankkonto?</label>
-                <label className="mr-4"><input type="radio" name="bankkonto" value="true" checked={form.bankkonto === true} onChange={handleChange} /> Ja</label>
-                <label><input type="radio" name="bankkonto" value="false" checked={form.bankkonto === false} onChange={handleChange} /> Nein</label>
-              </div>
-
-              <div>
-                <label className="block mb-1">Wie viele Tage haben Sie in den letzten 12 Monaten im Zielland verbracht?</label>
-                <input name="tageVorher" type="number" value={form.tageVorher} onChange={handleChange} className="w-full border px-2 py-1" />
-              </div>
-
-              <div>
-                <label className="inline-flex items-center">
-                  <input name="bestaetigung" type="checkbox" checked={form.bestaetigung} onChange={handleChange} className="mr-2" />
-                  Hiermit bestätige ich die Richtigkeit meiner Angaben
-                </label>
-              </div>
-
-              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Absenden</button>
-            </form>
+            </div>
           </div>
         )}
 
