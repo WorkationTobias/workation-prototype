@@ -39,9 +39,9 @@ export default function Home() {
   ])
 
   const [destinationenDetails] = useState([
-    { name: "Robinson Club", info: "Mehr als 400 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "/flags/1.png" },
-    { name: "Wyndham Resorts", info: "Mehr als 300 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "/flags/2.png" },
-    { name: "Valamar", info: "Poreč", rabatt: "10% Nachlass nutzen", bild: "/flags/3.png" }
+    { name: "Robinson Club", info: "Mehr als 400 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "https://images.unsplash.com/photo-1549924231-f129b911e442" },
+    { name: "Wyndham Resorts", info: "Mehr als 300 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "https://images.unsplash.com/photo-1551907234-607a898538d8" },
+    { name: "Valamar", info: "Poreč", rabatt: "10% Nachlass nutzen", bild: "https://images.unsplash.com/photo-1558959357-685f9d0b17be" }
   ])
 
   const handleKachelClick = (resort) => {
