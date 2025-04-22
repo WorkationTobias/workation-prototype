@@ -231,11 +231,11 @@ export default function Home() {
                     <button className="mt-2 bg-orange-500 text-white px-3 py-1 text-sm rounded">{d.rabatt}</button>
                     {d.scoring && (
                       <div className="mt-3 text-sm text-gray-700">
-                        <p>⭐ Infrastruktur: {d.scoring[0]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Komfort: {d.scoring[1]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Freizeit: {d.scoring[2]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Service: {d.scoring[4]} Sterne von 5 möglichen Sternen</p>
+                        <p>⭐ Infrastruktur: {d.scoring[0]} von 5 möglichen Sternen</p>
+                        <p>⭐ Komfort: {d.scoring[1]} von 5 möglichen Sternen</p>
+                        <p>⭐ Freizeit: {d.scoring[2]} von 5 möglichen Sternen</p>
+                        <p>⭐ Nachhaltigkeit: {d.scoring[3]} von 5 möglichen Sternen</p>
+                        <p>⭐ Service: {d.scoring[4]} von 5 möglichen Sternen</p>
                         <p className="mt-2 font-bold text-green-600">Dieser Partner ist mit dem Gütesiegel: WORKATION READY zertifziert</p>
                       </div>
                     )}
