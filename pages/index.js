@@ -67,10 +67,10 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen">
-<div className="flex items-center justify-center">
-  <img src="/flags/01_WW_primary_lockup_white.png" alt="Workation World Logo" className="w-48" />
-</div>
+<aside className="w-64 bg-gray-800 text-white p-4 space-y-4">
+  <div className="flex items-center justify-center mb-4">
+    <img src="/flags/01_WW_primary_lockup_white.png" alt="Workation World Logo" className="w-48" />
+  </div>
         <nav className="space-y-2">
           <button className={`block w-full text-left px-2 py-1 rounded ${activeTab === "antrag" ? "bg-blue-600" : "hover:bg-gray-700"}`} onClick={() => setActiveTab("antrag")}>Antrag stellen</button>
           <button className={`block w-full text-left px-2 py-1 rounded ${activeTab === "meine-anfragen" ? "bg-blue-600" : "hover:bg-gray-700"}`} onClick={() => setActiveTab("meine-anfragen")}>Meine Anfragen</button>
