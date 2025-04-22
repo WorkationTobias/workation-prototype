@@ -121,9 +121,52 @@ export default function Home() {
               ))}
             </div>
           </div>
-        ) : (
-          <div className="text-gray-500">Inhalt für "{activeTab}" wird bald angezeigt.</div>
-        )}
+        ) : activeTab === "antrag" ? (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Workation-Antrag stellen</h2>
+            {/* Formularinhalte können hier folgen */}
+          </div>
+        ) : activeTab === "meine-anfragen" ? (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Meine Anfragen</h2>
+            <table className="w-full text-sm text-left">
+              <thead>
+                <tr className="border-b">
+                  <th className="p-2">Zielland</th>
+                  <th className="p-2">Zeitraum</th>
+                  <th className="p-2">Arbeitstage</th>
+                  <th className="p-2">Risiko</th>
+                  <th className="p-2">Genehmigung</th>
+                  <th className="p-2">Buchungscode</th>
+                  <th className="p-2">Dokumente</th>
+                </tr>
+              </thead>
+              <tbody>
+                {anfragen.map((a, i) => (
+                  <tr key={i} className="border-b">
+                    <td className="p-2">{a.land}</td>
+                    <td className="p-2">{a.start} – {a.ende}</td>
+                    <td className="p-2">{a.arbeitstage}</td>
+                    <td className="p-2">{a.risikobewertung}</td>
+                    <td className="p-2">{a.genehmigung}</td>
+                    <td className="p-2">{a.buchungscode}</td>
+                    <td className="p-2">{a.dokumente}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : activeTab === "mein-profil" ? (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Mein Profil</h2>
+            {/* Profilbearbeitung und Felder folgen */}
+          </div>
+        ) : activeTab === "policy" ? (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Workation Policy</h2>
+            {/* Policy Inhalte hier */}
+          </div>
+        ) : null}
       </main>
     </div>
   )
