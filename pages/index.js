@@ -121,8 +121,8 @@ export default function Home() {
       </aside>
 
       <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
-        {/* Hier bleibt dein aktiver Tab-Inhalt unverändert */}
-        {/* Ich lasse diesen Part im aktuellen Zustand – alle Inhalte sind korrekt */}
+        {/* Inhalte zu den Tabs folgen in weiteren Implementierungsschritten */}
+        <p className="text-gray-500">Bitte wählen Sie einen Menüpunkt aus.</p>
       </main>
     </div>
   )
