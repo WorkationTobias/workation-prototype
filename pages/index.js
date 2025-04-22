@@ -82,139 +82,75 @@ export default function Home() {
       </aside>
 
       <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
-        {selectedResort === "Robinson Club" ? (
+        {activeTab === "mein-profil" && (
           <div>
-            <h2 className="text-2xl font-bold mb-4">Robinson Club</h2>
-            <img src="https://www.robinson.com/fileadmin/media/_processed_/b/f/csm_qr58_13610_Hauptpool_381a397ac3.jpg" className="w-full h-64 object-cover rounded mb-4" />
-            <ul className="space-y-2 mb-4">
-              <li>⭐ Infrastruktur und technische Ausstattung: 4 Sterne von 5 möglichen Sternen</li>
-              <li>⭐ Unterkunft & Komfort: 5 Sterne von 5 möglichen Sternen</li>
-              <li>⭐ Freizeit- und Erholungsangebote: 5 Sterne von 5 möglichen Sternen</li>
-              <li>⭐ Nachhaltigkeit & Umweltbewusstsein: 3 Sterne von 5 möglichen Sternen</li>
-              <li>⭐ Service & Betreuung: 5 Sterne von 5 möglichen Sternen</li>
-            </ul>
-            <div className="bg-green-100 text-green-800 px-4 py-2 rounded shadow w-fit">Diese Destination ist <strong>WORKATION READY</strong> zertifiziert</div>
-          </div>
-        ) : selectedResort == null && activeTab === "destinationen" ? (
-          <div>
-            <h2 className="text-xl font-bold mb-4">Meine Workation-Destinationen</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {destinationenDetails.map((d, i) => (
-                <div key={i} onClick={() => handleKachelClick(d)} className="cursor-pointer bg-white shadow rounded overflow-hidden hover:shadow-lg transition">
-                  <img src={d.bild} alt={d.name} className="h-40 w-full object-cover" />
-                  <div className="p-4">
-                    <h3 className="font-bold text-lg">{d.name}</h3>
-                    <p className="text-sm text-gray-600">{d.info}</p>
-                    <button className="mt-2 bg-orange-500 text-white text-sm px-2 py-1 rounded">{d.rabatt}</button>
-                    {d.scoring && (
-                      <div className="mt-3 text-xs text-gray-600 space-y-1">
-                        <div>⭐ Infrastruktur: {d.scoring[0]} Sterne von 5 möglichen Sternen</div>
-                        <div>⭐ Komfort: {d.scoring[1]} Sterne von 5 möglichen Sternen</div>
-                        <div>⭐ Freizeit: {d.scoring[2]} Sterne von 5 möglichen Sternen</div>
-                        <div>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne von 5 möglichen Sternen</div>
-                        <div>⭐ Service: {d.scoring[4]} Sterne von 5 möglichen Sternen</div>
-                        <div className="text-green-600 font-semibold pt-1">✅ WORKATION READY zertifiziert</div>
-                      </div>
-                    )}
-                  </div>
+            <h2 className="text-xl font-bold mb-4">Mein Profil</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
+              {[
+                ["Vor- und Nachname", ""],
+                ["Staatsangehörigkeit", ""],
+                ["Zweite Staatsangehörigkeit", ""],
+                ["Geschlecht", ""],
+                ["Geburtsdatum", ""],
+                ["Geburtsort", ""],
+                ["Straße und Hausnummer", ""],
+                ["Postleitzahl", ""],
+                ["Stadt", ""],
+                ["Land", ""],
+                ["Land der Lohnabrechnung", ""],
+                ["Krankenversicherung", ""],
+                ["Öffentliche Krankenversicherung", ""],
+                ["Sozialversicherungsnummer", ""],
+                ["Berufsbezeichnung", ""],
+                ["Abteilung", ""],
+                ["Eintrittsdatum", ""],
+                ["E-Mail-Adresse der Führungskraft", ""],
+                ["Bietet lokale Dienste an", ""],
+                ["Vollmacht", ""],
+                ["Oberes Management / Vertrieb / Beschaffung", ""]
+              ].map(([label], idx) => (
+                <div key={idx}>
+                  <label className="block text-sm font-medium text-gray-700">{label}</label>
+                  <input type="text" className="mt-1 block w-full border px-2 py-1 rounded" />
                 </div>
               ))}
             </div>
           </div>
-        ) : activeTab === "antrag" ? (
-          <div>
-            <h2 className="text-xl font-bold mb-4">Workation-Antrag stellen</h2>
-            <form className="space-y-4 max-w-lg">
-              <div>
-                <label className="block font-medium">Zielland</label>
-                <select className="w-full border px-2 py-1" value={form.land} onChange={e => setForm({ ...form, land: e.target.value })}>
-                  <option value="">Bitte wählen</option>
-                  {[
-                    "Kroatien", "Spanien", "Italien", "Portugal", "Griechenland", "Thailand", "Indonesien", "Mexiko",
-                    "Frankreich", "Türkei", "Zypern", "Ägypten", "Sri Lanka", "Vietnam", "Marokko", "Brasilien",
-                    "Kap Verde", "Dominikanische Republik", "Costa Rica", "Georgien", "Malta", "Montenegro", "Albanien", "Island",
-                    "Norwegen", "Schweden", "Finnland", "Estland", "Lettland", "Litauen", "Polen", "Tschechien", "Ungarn"
-                  ].map((l, i) => <option key={i} value={l}>{l}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="block font-medium">Ankunft</label>
-                <input type="date" className="w-full border px-2 py-1" value={form.start} onChange={e => setForm({ ...form, start: e.target.value })} />
-              </div>
-              <div>
-                <label className="block font-medium">Abreise</label>
-                <input type="date" className="w-full border px-2 py-1" value={form.ende} onChange={e => setForm({ ...form, ende: e.target.value })} />
-              </div>
-              <div>
-                <label className="block font-medium">Wie viele Tage werden Sie arbeiten?</label>
-                <input type="number" className="w-full border px-2 py-1" value={form.arbeitstage} onChange={e => setForm({ ...form, arbeitstage: parseInt(e.target.value) || 0 })} />
-              </div>
-              <div>
-                <label className="block font-medium">Sind Sie im Zielland steuerpflichtig?</label>
-                <label><input type="radio" name="steuer" value="ja" checked={form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: true })} /> Ja</label>
-                <label className="ml-4"><input type="radio" name="steuer" value="nein" checked={!form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: false })} /> Nein</label>
-              </div>
-              <div>
-                <label className="block font-medium">Haben Sie im Zielland ein Bankkonto?</label>
-                <label><input type="radio" name="bank" value="ja" checked={form.bankkonto} onChange={() => setForm({ ...form, bankkonto: true })} /> Ja</label>
-                <label className="ml-4"><input type="radio" name="bank" value="nein" checked={!form.bankkonto} onChange={() => setForm({ ...form, bankkonto: false })} /> Nein</label>
-              </div>
-              <div>
-                <label className="block font-medium">Wie viele Tage haben Sie in den letzten 12 Monaten im Zielland verbracht?</label>
-                <input type="number" className="w-full border px-2 py-1" value={form.tageVorher} onChange={e => setForm({ ...form, tageVorher: parseInt(e.target.value) || 0 })} />
-              </div>
-              <div>
-                <label><input type="checkbox" checked={form.bestaetigung} onChange={e => setForm({ ...form, bestaetigung: e.target.checked })} /> Hiermit bestätige ich die Richtigkeit meiner Angaben</label>
-              </div>
-              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Absenden</button>
-            </form>
-          </div>
-        ) : activeTab === "meine-anfragen" ? (
-          <div>
-            <h2 className="text-xl font-bold mb-4">Meine Anfragen</h2>
-            <table className="w-full text-sm text-left">
-              <thead>
-                <tr className="border-b">
-                  <th className="p-2">Zielland</th>
-                  <th className="p-2">Zeitraum</th>
-                  <th className="p-2">Arbeitstage</th>
-                  <th className="p-2">Risiko</th>
-                  <th className="p-2">Genehmigung</th>
-                  <th className="p-2">Buchungscode</th>
-                  <th className="p-2">Dokumente</th>
-                </tr>
-              </thead>
-              <tbody>
-                {anfragen.map((a, i) => (
-                  <tr key={i} className="border-b">
-                    <td className="p-2">{a.land}</td>
-                    <td className="p-2">{a.start} – {a.ende}</td>
-                    <td className="p-2">{a.arbeitstage}</td>
-                    <td className="p-2">{a.risikobewertung}</td>
-                    <td className="p-2">{a.genehmigung}</td>
-                    <td className="p-2">{a.buchungscode}</td>
-                    <td className="p-2">{a.dokumente}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : activeTab === "mein-profil" ? (
-          <div>
-            <h2 className="text-xl font-bold mb-4">Mein Profil</h2>
-            <p className="text-gray-600">Hier können Sie Ihre persönlichen Informationen bearbeiten. (Platzhalter – Eingabefelder folgen)</p>
-          </div>
-        ) : activeTab === "policy" ? (
+        )}
+
+        {activeTab === "policy" && (
           <div>
             <h2 className="text-xl font-bold mb-4">Workation Policy</h2>
-            <p className="text-gray-600">Ihre Unternehmensrichtlinie erlaubt bis zu 183 Arbeitstage im Ausland pro Kalenderjahr.</p>
-            <p className="text-sm mt-2">Enthaltene Länder: Aruba, Afghanistan, Angola uvm.</p>
-            <p className="text-xs text-red-500 mt-2">Rot markierte Länder gelten als nicht empfohlen.</p>
-            <p className="mt-4 text-sm">Betriebsvereinbarung: WorkFlex - Terms & Conditions</p>
-            <p className="text-sm">Datenschutz im Ausland: Data Privacy & Security</p>
-            <p className="text-sm">Krankenversicherung: Insurance Policy</p>
+            <div className="bg-white rounded shadow p-4">
+              <h3 className="font-semibold">Maximale Anzahl an Tagen</h3>
+              <p>Ihre Unternehmensrichtlinie besagt, dass Sie bis zu 183 Arbeitstage im Ausland pro Kalenderjahr arbeiten können</p>
+              <h3 className="font-semibold mt-4">Reiseländer</h3>
+              <p>Sie können Reisen zu jedem enthaltenen Ziel anfordern. Für die ausgeschlossenen Ziele sind Reisen deaktiviert.</p>
+              <div className="flex justify-between mt-2 text-sm">
+                <div><strong>Ausgeschlossene Länder</strong></div>
+                <div><strong>Enthaltene Länder</strong> <span className="text-xs text-blue-600">Show +208 more</span></div>
+              </div>
+              <p className="text-xs text-red-500 mt-2">Die in Rot hervorgehobenen Länder gehören zur Liste der nicht empfohlenen Länder.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
+              <div className="bg-white rounded shadow p-3">
+                <p className="font-semibold">Allgemeine Betriebsvereinbarung</p>
+                <p>📄 WorkFlex - Terms & conditions.pdf</p>
+                <p className="text-xs">Akzeptiert am 19.06.2024</p>
+              </div>
+              <div className="bg-white rounded shadow p-3">
+                <p className="font-semibold">Datenschutz im Ausland</p>
+                <p>📄 Data privacy and security.pdf</p>
+                <p className="text-xs">Akzeptiert am 19.06.2024</p>
+              </div>
+              <div className="bg-white rounded shadow p-3">
+                <p className="font-semibold">Krankenversicherung</p>
+                <p>📄 Insurance policy.pdf</p>
+                <p className="text-xs">Akzeptiert am 19.06.2024</p>
+              </div>
+            </div>
           </div>
-        ) : null}
+        )}
       </main>
     </div>
   )
