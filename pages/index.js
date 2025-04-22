@@ -50,7 +50,7 @@ export default function Home() {
       name: "Wyndham Resorts",
       info: "Mehr als 300 Reiseziele",
       rabatt: "10% Nachlass nutzen",
-      bild: "https://www.wyndhamhotels.com/content/dam/property-images/en-us/hr/au/others/torquay/16284/16284_pool%2014.jpg?downsize=700:*,
+      bild: "https://www.wyndhamhotels.com/content/dam/property-images/en-us/hr/au/others/torquay/16284/16284_pool%2014.jpg?downsize=700:*",
       scoring: [3, 2, 4, 4, 4]
     },
     {
