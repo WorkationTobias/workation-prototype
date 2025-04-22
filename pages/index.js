@@ -39,9 +39,25 @@ export default function Home() {
   ])
 
   const [destinationenDetails] = useState([
-    { name: "Robinson Club", info: "Mehr als 400 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "/flags/1.png" },
-    { name: "Wyndham Resorts", info: "Mehr als 300 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "/flags/2.png" },
-    { name: "Valamar", info: "Poreč", rabatt: "10% Nachlass nutzen", bild: "/flags/3.png" }
+    {
+      name: "Robinson Club",
+      info: "Mehr als 400 Reiseziele",
+      rabatt: "10% Nachlass nutzen",
+      bild: "/flags/1.png",
+      scoring: [4, 5, 5, 3, 5]
+    },
+    {
+      name: "Wyndham Resorts",
+      info: "Mehr als 300 Reiseziele",
+      rabatt: "10% Nachlass nutzen",
+      bild: "/flags/2.png"
+    },
+    {
+      name: "Valamar",
+      info: "Poreč",
+      rabatt: "10% Nachlass nutzen",
+      bild: "/flags/3.png"
+    }
   ])
 
   const handleKachelClick = (resort) => {
@@ -69,10 +85,9 @@ export default function Home() {
             <label className="block font-medium">Zielland</label>
             <select className="w-full p-2 border rounded" value={form.land} onChange={(e) => setForm({ ...form, land: e.target.value })}>
               <option value="">Bitte wählen</option>
-              {[
-                "Kroatien", "Spanien", "Italien", "Griechenland", "Portugal",
-                "Frankreich", "Thailand", "Indonesien", "Mexiko", "Zypern"
-              ].map((land, i) => <option key={i} value={land}>{land}</option>)}
+              {["Kroatien", "Spanien", "Italien", "Griechenland", "Portugal", "Frankreich", "Thailand", "Indonesien", "Mexiko", "Zypern"].map((land, i) => (
+                <option key={i} value={land}>{land}</option>
+              ))}
             </select>
             <label className="block font-medium">Ankunft</label>
             <input type="date" className="w-full p-2 border rounded" value={form.start} onChange={(e) => setForm({ ...form, start: e.target.value })} />
@@ -80,26 +95,16 @@ export default function Home() {
             <input type="date" className="w-full p-2 border rounded" value={form.ende} onChange={(e) => setForm({ ...form, ende: e.target.value })} />
             <label className="block font-medium">Gewünschte Arbeitstage</label>
             <input type="number" className="w-full p-2 border rounded" value={form.arbeitstage} onChange={(e) => setForm({ ...form, arbeitstage: e.target.value })} />
-            <div className="space-y-2">
-              <div>
-                <label className="block">Sind Sie im Zielland steuerpflichtig?</label>
-                <label><input type="radio" name="steuer" checked={form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: true })} /> Ja</label>
-                <label className="ml-4"><input type="radio" name="steuer" checked={!form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: false })} /> Nein</label>
-              </div>
-              <div>
-                <label className="block">Haben Sie im Zielland ein Bankkonto?</label>
-                <label><input type="radio" name="bank" checked={form.bankkonto} onChange={() => setForm({ ...form, bankkonto: true })} /> Ja</label>
-                <label className="ml-4"><input type="radio" name="bank" checked={!form.bankkonto} onChange={() => setForm({ ...form, bankkonto: false })} /> Nein</label>
-              </div>
-              <div>
-                <label>Wie viele Tage haben Sie in den letzten 12 Monaten im Zielland verbracht?</label>
-                <input type="number" className="w-full p-2 border rounded" value={form.tageVorher} onChange={(e) => setForm({ ...form, tageVorher: e.target.value })} />
-              </div>
-              <div>
-                <label><input type="checkbox" checked={form.bestaetigung} onChange={(e) => setForm({ ...form, bestaetigung: e.target.checked })} /> Hiermit bestätige ich die Richtigkeit meiner Angaben</label>
-              </div>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setSubmitted(true)}>Absenden</button>
-            </div>
+            <label className="block">Sind Sie im Zielland steuerpflichtig?</label>
+            <label><input type="radio" name="steuer" checked={form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: true })} /> Ja</label>
+            <label className="ml-4"><input type="radio" name="steuer" checked={!form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: false })} /> Nein</label>
+            <label className="block">Haben Sie im Zielland ein Bankkonto?</label>
+            <label><input type="radio" name="bank" checked={form.bankkonto} onChange={() => setForm({ ...form, bankkonto: true })} /> Ja</label>
+            <label className="ml-4"><input type="radio" name="bank" checked={!form.bankkonto} onChange={() => setForm({ ...form, bankkonto: false })} /> Nein</label>
+            <label>Wie viele Tage haben Sie in den letzten 12 Monaten im Zielland verbracht?</label>
+            <input type="number" className="w-full p-2 border rounded" value={form.tageVorher} onChange={(e) => setForm({ ...form, tageVorher: e.target.value })} />
+            <label><input type="checkbox" checked={form.bestaetigung} onChange={(e) => setForm({ ...form, bestaetigung: e.target.checked })} /> Hiermit bestätige ich die Richtigkeit meiner Angaben</label>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setSubmitted(true)}>Absenden</button>
           </div>
         )}
 
@@ -145,14 +150,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold">Persönliche Daten</h3>
-                {[
-                  "Vor- und Nachname",
-                  "Staatsangehörigkeit",
-                  "Zweite Staatsangehörigkeit",
-                  "Geschlecht",
-                  "Geburtsdatum",
-                  "Geburtsort"
-                ].map((label, i) => (
+                {["Vor- und Nachname", "Staatsangehörigkeit", "Zweite Staatsangehörigkeit", "Geschlecht", "Geburtsdatum", "Geburtsort"].map((label, i) => (
                   <div key={i} className="mb-2">
                     <label className="block text-gray-600 text-sm">{label}</label>
                     <input className="w-full p-2 border rounded" />
@@ -161,12 +159,7 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="font-semibold">Wohnadresse</h3>
-                {[
-                  "Straße und Hausnummer",
-                  "Postleitzahl",
-                  "Stadt",
-                  "Land"
-                ].map((label, i) => (
+                {["Straße und Hausnummer", "Postleitzahl", "Stadt", "Land"].map((label, i) => (
                   <div key={i} className="mb-2">
                     <label className="block text-gray-600 text-sm">{label}</label>
                     <input className="w-full p-2 border rounded" />
@@ -175,12 +168,7 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="font-semibold">Offizielle Informationen</h3>
-                {[
-                  "Land der Lohnabrechnung",
-                  "Krankenversicherung",
-                  "Öffentliche Krankenversicherung",
-                  "Sozialversicherungsnummer"
-                ].map((label, i) => (
+                {["Land der Lohnabrechnung", "Krankenversicherung", "Öffentliche Krankenversicherung", "Sozialversicherungsnummer"].map((label, i) => (
                   <div key={i} className="mb-2">
                     <label className="block text-gray-600 text-sm">{label}</label>
                     <input className="w-full p-2 border rounded" />
@@ -189,15 +177,7 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="font-semibold">Jobinformationen</h3>
-                {[
-                  "Berufsbezeichnung",
-                  "Abteilung",
-                  "Eintrittsdatum",
-                  "E-Mail-Adresse der Führungskraft",
-                  "Bietet lokale Dienste an",
-                  "Vollmacht",
-                  "Oberes Management / Vertrieb / Beschaffung"
-                ].map((label, i) => (
+                {["Berufsbezeichnung", "Abteilung", "Eintrittsdatum", "E-Mail-Adresse der Führungskraft", "Bietet lokale Dienste an", "Vollmacht", "Oberes Management / Vertrieb / Beschaffung"].map((label, i) => (
                   <div key={i} className="mb-2">
                     <label className="block text-gray-600 text-sm">{label}</label>
                     <input className="w-full p-2 border rounded" />
@@ -224,11 +204,7 @@ export default function Home() {
               <p className="text-xs mt-2 text-gray-500">Die in Rot hervorgehobenen Länder gehören zur Liste der nicht empfohlenen Länder.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { titel: "Allgemeine Betriebsvereinbarung", name: "WorkFlex – Terms & Conditions.pdf" },
-                { titel: "Datenschutz im Ausland", name: "Data privacy and security.pdf" },
-                { titel: "Krankenversicherung", name: "Insurance policy.pdf" }
-              ].map((doc, i) => (
+              {[{ titel: "Allgemeine Betriebsvereinbarung", name: "WorkFlex – Terms & Conditions.pdf" }, { titel: "Datenschutz im Ausland", name: "Data privacy and security.pdf" }, { titel: "Krankenversicherung", name: "Insurance policy.pdf" }].map((doc, i) => (
                 <div key={i} className="bg-white p-4 shadow rounded">
                   <h4 className="font-semibold mb-2">{doc.titel}</h4>
                   <div className="flex justify-between items-center">
@@ -242,24 +218,34 @@ export default function Home() {
           </div>
         )}
 
-        {destinationenDetails.map((d, i) => (
-  <div key={i} className="bg-white rounded shadow overflow-hidden cursor-pointer" onClick={() => handleKachelClick(d)}>
-    <img src={d.bild} alt={d.name} className="w-full h-40 object-cover" />
-    <div className="p-4">
-      <h3 className="font-bold text-lg">{d.name}</h3>
-      <p className="text-sm text-gray-600">{d.info}</p>
-      <button className="mt-2 bg-orange-500 text-white px-3 py-1 text-sm rounded">{d.rabatt}</button>
-      {d.scoring && (
-        <div className="mt-3 text-sm text-gray-700">
-          <p>⭐ Infrastruktur: {d.scoring[0]} Sterne von 5 möglichen Sternen</p>
-          <p>⭐ Komfort: {d.scoring[1]} Sterne von 5 möglichen Sternen</p>
-          <p>⭐ Freizeit: {d.scoring[2]} Sterne von 5 möglichen Sternen</p>
-          <p>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne von 5 möglichen Sternen</p>
-          <p>⭐ Service: {d.scoring[4]} Sterne von 5 möglichen Sternen</p>
-          <p className="mt-2 font-bold text-green-600">Dieser Partner ist mit dem Gütesiegel: WORKATION READY zertifziert</p>
-        </div>
-      )}
+        {activeTab === "destinationen" && (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Meine Workation-Destinationen</h2>
+            <div className="grid grid-cols-3 gap-6">
+              {destinationenDetails.map((d, i) => (
+                <div key={i} className="bg-white rounded shadow overflow-hidden cursor-pointer" onClick={() => handleKachelClick(d)}>
+                  <img src={d.bild} alt={d.name} className="w-full h-40 object-cover" />
+                  <div className="p-4">
+                    <h3 className="font-bold text-lg">{d.name}</h3>
+                    <p className="text-sm text-gray-600">{d.info}</p>
+                    <button className="mt-2 bg-orange-500 text-white px-3 py-1 text-sm rounded">{d.rabatt}</button>
+                    {d.scoring && (
+                      <div className="mt-3 text-sm text-gray-700">
+                        <p>⭐ Infrastruktur: {d.scoring[0]} Sterne von 5 möglichen Sternen</p>
+                        <p>⭐ Komfort: {d.scoring[1]} Sterne von 5 möglichen Sternen</p>
+                        <p>⭐ Freizeit: {d.scoring[2]} Sterne von 5 möglichen Sternen</p>
+                        <p>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne von 5 möglichen Sternen</p>
+                        <p>⭐ Service: {d.scoring[4]} Sterne von 5 möglichen Sternen</p>
+                        <p className="mt-2 font-bold text-green-600">Dieser Partner ist mit dem Gütesiegel: WORKATION READY zertifziert</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </main>
     </div>
-  </div>
-))}
-
+  )
+}
