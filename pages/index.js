@@ -64,9 +64,9 @@ export default function Home() {
 
   const [policy, setPolicy] = useState({
     maxTage: 183,
-    enthalteneLaender: ["Aruba", "Afghanistan", "Angola"],
+    enthalteneLaender: ["alle"],
     dokumente: [
-      { titel: "Allgemeine Betriebsvereinbarung", name: "WorkFlex - Terms & conditions.pdf", groesse: "197.36 kB", datum: "19.06.2024" },
+      { titel: "Allgemeine Betriebsvereinbarung", name: "Workation World - Terms & conditions.pdf", groesse: "197.36 kB", datum: "19.06.2024" },
       { titel: "Datenschutz im Ausland", name: "Data privacy and security.pdf", groesse: "124.1 kB", datum: "19.06.2024" },
       { titel: "Krankenversicherung", name: "Insurance policy.pdf", groesse: "121.31 kB", datum: "19.06.2024" }
     ]
