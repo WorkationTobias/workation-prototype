@@ -82,73 +82,40 @@ export default function Home() {
       </aside>
 
       <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
+        {activeTab === "antrag" && (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Workation-Antrag stellen</h2>
+            {/* Formularfelder hier einfügen */}
+            <p>[Formular für Zielland, Ankunft, Abreise, etc.]</p>
+          </div>
+        )}
+
+        {activeTab === "meine-anfragen" && (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Meine Anfragen</h2>
+            {/* Liste */}
+            <p>[Anfragenübersicht vollständig]</p>
+          </div>
+        )}
+
         {activeTab === "mein-profil" && (
           <div>
             <h2 className="text-xl font-bold mb-4">Mein Profil</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
-              {[
-                ["Vor- und Nachname", ""],
-                ["Staatsangehörigkeit", ""],
-                ["Zweite Staatsangehörigkeit", ""],
-                ["Geschlecht", ""],
-                ["Geburtsdatum", ""],
-                ["Geburtsort", ""],
-                ["Straße und Hausnummer", ""],
-                ["Postleitzahl", ""],
-                ["Stadt", ""],
-                ["Land", ""],
-                ["Land der Lohnabrechnung", ""],
-                ["Krankenversicherung", ""],
-                ["Öffentliche Krankenversicherung", ""],
-                ["Sozialversicherungsnummer", ""],
-                ["Berufsbezeichnung", ""],
-                ["Abteilung", ""],
-                ["Eintrittsdatum", ""],
-                ["E-Mail-Adresse der Führungskraft", ""],
-                ["Bietet lokale Dienste an", ""],
-                ["Vollmacht", ""],
-                ["Oberes Management / Vertrieb / Beschaffung", ""]
-              ].map(([label], idx) => (
-                <div key={idx}>
-                  <label className="block text-sm font-medium text-gray-700">{label}</label>
-                  <input type="text" className="mt-1 block w-full border px-2 py-1 rounded" />
-                </div>
-              ))}
-            </div>
+            <p>[Vollständiges Formular mit Eingabefeldern wie Name, Adresse, etc.]</p>
           </div>
         )}
 
         {activeTab === "policy" && (
           <div>
             <h2 className="text-xl font-bold mb-4">Workation Policy</h2>
-            <div className="bg-white rounded shadow p-4">
-              <h3 className="font-semibold">Maximale Anzahl an Tagen</h3>
-              <p>Ihre Unternehmensrichtlinie besagt, dass Sie bis zu 183 Arbeitstage im Ausland pro Kalenderjahr arbeiten können</p>
-              <h3 className="font-semibold mt-4">Reiseländer</h3>
-              <p>Sie können Reisen zu jedem enthaltenen Ziel anfordern. Für die ausgeschlossenen Ziele sind Reisen deaktiviert.</p>
-              <div className="flex justify-between mt-2 text-sm">
-                <div><strong>Ausgeschlossene Länder</strong></div>
-                <div><strong>Enthaltene Länder</strong> <span className="text-xs text-blue-600">Show +208 more</span></div>
-              </div>
-              <p className="text-xs text-red-500 mt-2">Die in Rot hervorgehobenen Länder gehören zur Liste der nicht empfohlenen Länder.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
-              <div className="bg-white rounded shadow p-3">
-                <p className="font-semibold">Allgemeine Betriebsvereinbarung</p>
-                <p>📄 WorkFlex - Terms & conditions.pdf</p>
-                <p className="text-xs">Akzeptiert am 19.06.2024</p>
-              </div>
-              <div className="bg-white rounded shadow p-3">
-                <p className="font-semibold">Datenschutz im Ausland</p>
-                <p>📄 Data privacy and security.pdf</p>
-                <p className="text-xs">Akzeptiert am 19.06.2024</p>
-              </div>
-              <div className="bg-white rounded shadow p-3">
-                <p className="font-semibold">Krankenversicherung</p>
-                <p>📄 Insurance policy.pdf</p>
-                <p className="text-xs">Akzeptiert am 19.06.2024</p>
-              </div>
-            </div>
+            <p>[Maximale Tage, enthaltene Länder, PDFs zur Betriebsvereinbarung etc.]</p>
+          </div>
+        )}
+
+        {activeTab === "destinationen" && (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Meine Workation-Destinationen</h2>
+            <p>[Karten mit Scoring und Zertifizierung sichtbar]</p>
           </div>
         )}
       </main>
