@@ -63,7 +63,13 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
-    setAnfragen((prev) => [...prev, form])
+    const neuerAntrag = {
+      ...form,
+      risikobewertung: "In Bearbeitung",
+      genehmigung: "Ausstehend",
+      buchungscode: "ausstehend"
+    }
+    setAnfragen((prev) => [...prev, neuerAntrag])
     setForm({
       land: "",
       start: "",
@@ -106,13 +112,12 @@ export default function Home() {
         {activeTab === "antrag-formular" && (
           <div className="max-w-2xl">
             <h2 className="text-xl font-semibold mb-4">Workation-Antrag stellen</h2>
-            <form onSubmit={(e) => {
-              e.preventDefault()
-              if (step < 4) setStep(step + 1)
-              else handleSubmit(e)
-            }} className="space-y-4">
-              {/* Schritte hier */}
-              {/* gleich wie vorher */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input name="land" placeholder="Zielland" value={form.land} onChange={handleChange} className="w-full border px-2 py-1" />
+              <input name="start" type="date" value={form.start} onChange={handleChange} className="w-full border px-2 py-1" />
+              <input name="ende" type="date" value={form.ende} onChange={handleChange} className="w-full border px-2 py-1" />
+              <input name="arbeitstage" type="number" placeholder="Arbeitstage" value={form.arbeitstage} onChange={handleChange} className="w-full border px-2 py-1" />
+              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Absenden</button>
             </form>
           </div>
         )}
