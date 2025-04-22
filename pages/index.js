@@ -235,7 +235,7 @@ export default function Home() {
               <p className="text-xs mt-2 text-gray-500">Die in Rot hervorgehobenen Länder gehören zur Liste der nicht empfohlenen Länder.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[{ titel: "Allgemeine Betriebsvereinbarung", name: "WorkFlex – Terms & Conditions.pdf" }, { titel: "Datenschutz im Ausland", name: "Data privacy and security.pdf" }, { titel: "Krankenversicherung", name: "Insurance policy.pdf" }].map((doc, i) => (
+              {[{ titel: "Allgemeine Betriebsvereinbarung", name: "Workation World – Terms & Conditions.pdf" }, { titel: "Datenschutz im Ausland", name: "Data privacy and security.pdf" }, { titel: "Krankenversicherung", name: "Insurance policy.pdf" }].map((doc, i) => (
                 <div key={i} className="bg-white p-4 shadow rounded">
                   <h4 className="font-semibold mb-2">{doc.titel}</h4>
                   <div className="flex justify-between items-center">
