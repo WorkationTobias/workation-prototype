@@ -1,1 +1,2 @@
-<CANVAS_WIRD_SPÄTER_EINGEFÜGT>
+// pages/index.js
+export { default } from "../Home"
