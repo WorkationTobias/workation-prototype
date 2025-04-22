@@ -1,4 +1,3 @@
-
 import Head from "next/head"
 import { useEffect, useState } from "react"
 
@@ -53,6 +52,7 @@ export default function Home() {
         <h1 className="text-2xl font-bold text-blue-900 mb-6">Workation World</h1>
         <button onClick={() => setActiveTab("antrag")} className="block w-full text-left">Antrag stellen</button>
         <button onClick={() => setActiveTab("meine-anfragen")} className="block w-full text-left">Meine Anfragen</button>
+        <hr className="my-2 border-gray-300" />
         <button onClick={() => setActiveTab("profil")} className="block w-full text-left">Mein Profil</button>
         <button onClick={() => setActiveTab("policy")} className="block w-full text-left">Workation Policy</button>
         <hr className="my-4 border-gray-300" />
@@ -118,4 +118,3 @@ export default function Home() {
     </div>
   )
 }
-    
