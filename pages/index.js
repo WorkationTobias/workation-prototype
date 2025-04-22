@@ -1,3 +1,4 @@
+
 import Head from "next/head"
 import { useEffect, useState } from "react"
 
@@ -50,13 +51,12 @@ export default function Home() {
     <div className="flex min-h-screen">
       <aside className="w-64 bg-white shadow-md p-6 space-y-4">
         <h1 className="text-2xl font-bold text-blue-900 mb-6">Workation World</h1>
-        <button onClick={() => setActiveTab("antrag")}>Antrag stellen</button>
-        <button onClick={() => setActiveTab("meine-anfragen")}>Meine Anfragen</button>
-        <button onClick={() => setActiveTab("profil")}>Mein Profil</button>
-        <button onClick={() => setActiveTab("policy")}>Workation Policy</button>
-        <div className="border-t pt-4">
-          <button onClick={() => setActiveTab("destinationen")}>Meine Workation-Destinationen</button>
-        </div>
+        <button onClick={() => setActiveTab("antrag")} className="block w-full text-left">Antrag stellen</button>
+        <button onClick={() => setActiveTab("meine-anfragen")} className="block w-full text-left">Meine Anfragen</button>
+        <button onClick={() => setActiveTab("profil")} className="block w-full text-left">Mein Profil</button>
+        <button onClick={() => setActiveTab("policy")} className="block w-full text-left">Workation Policy</button>
+        <hr className="my-4 border-gray-300" />
+        <button onClick={() => setActiveTab("destinationen")} className="block w-full text-left">Meine Workation-Destinationen</button>
       </aside>
 
       <main className="flex-1 bg-gray-50 p-8">
@@ -118,3 +118,4 @@ export default function Home() {
     </div>
   )
 }
+    
