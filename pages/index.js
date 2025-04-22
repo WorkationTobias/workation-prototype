@@ -87,13 +87,13 @@ export default function Home() {
             <h2 className="text-2xl font-bold mb-4">Robinson Club</h2>
             <img src="https://www.robinson.com/fileadmin/media/_processed_/b/f/csm_qr58_13610_Hauptpool_381a397ac3.jpg" className="w-full h-64 object-cover rounded mb-4" />
             <ul className="space-y-2 mb-4">
-              <li>⭐ Infrastruktur und technische Ausstattung: 4 Sterne</li>
-              <li>⭐ Unterkunft & Komfort: 5 Sterne</li>
-              <li>⭐ Freizeit- und Erholungsangebote: 5 Sterne</li>
-              <li>⭐ Nachhaltigkeit & Umweltbewusstsein: 3 Sterne</li>
-              <li>⭐ Service & Betreuung: 5 Sterne</li>
+              <li>⭐ Infrastruktur und technische Ausstattung: 4 Sterne von 5 möglichen Sternen</li>
+              <li>⭐ Unterkunft & Komfort: 5 Sterne von 5 möglichen Sternen</li>
+              <li>⭐ Freizeit- und Erholungsangebote: 5 Sterne von 5 möglichen Sternen</li>
+              <li>⭐ Nachhaltigkeit & Umweltbewusstsein: 3 Sterne von 5 möglichen Sternen</li>
+              <li>⭐ Service & Betreuung: 5 Sterne von 5 möglichen Sternen</li>
             </ul>
-            <div className="bg-green-100 text-green-800 px-4 py-2 rounded shadow w-fit">Dieser Partner ist mit dem Gütesiegel: <strong>WORKATION READY</strong> zertifiziert</div>
+            <div className="bg-green-100 text-green-800 px-4 py-2 rounded shadow w-fit">Diese Destination ist <strong>WORKATION READY</strong> zertifiziert</div>
           </div>
         ) : selectedResort == null && activeTab === "destinationen" ? (
           <div>
@@ -108,11 +108,12 @@ export default function Home() {
                     <button className="mt-2 bg-orange-500 text-white text-sm px-2 py-1 rounded">{d.rabatt}</button>
                     {d.scoring && (
                       <div className="mt-3 text-xs text-gray-600 space-y-1">
-                        <div>⭐ Infrastruktur: {d.scoring[0]} Sterne</div>
-                        <div>⭐ Komfort: {d.scoring[1]} Sterne</div>
-                        <div>⭐ Freizeit: {d.scoring[2]} Sterne</div>
-                        <div>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne</div>
-                        <div>⭐ Service: {d.scoring[4]} Sterne</div>
+                        <div>⭐ Infrastruktur: {d.scoring[0]} Sterne von 5 möglichen Sternen</div>
+                        <div>⭐ Komfort: {d.scoring[1]} Sterne von 5 möglichen Sternen</div>
+                        <div>⭐ Freizeit: {d.scoring[2]} Sterne von 5 möglichen Sternen</div>
+                        <div>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne von 5 möglichen Sternen</div>
+                        <div>⭐ Service: {d.scoring[4]} Sterne von 5 möglichen Sternen</div>
+                        <div className="text-green-600 font-semibold pt-1">✅ WORKATION READY zertifiziert</div>
                       </div>
                     )}
                   </div>
