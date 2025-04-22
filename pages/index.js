@@ -242,7 +242,6 @@ export default function Home() {
           </div>
         )}
 
-  {/* Destinationen */}
         {activeTab === "destinationen" && (
           <div>
             <h2 className="text-xl font-bold mb-4">Meine Workation-Destinationen</h2>
