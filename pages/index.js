@@ -41,7 +41,7 @@ export default function Home() {
   const [destinationenDetails] = useState([
     { name: "Robinson Club", info: "Mehr als 400 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "https://www.robinson.com/fileadmin/media/_processed_/b/f/csm_qr58_13610_Hauptpool_381a397ac3.jpg" },
     { name: "Wyndham Resorts", info: "Mehr als 300 Reiseziele", rabatt: "10% Nachlass nutzen", bild: "https://www.wyndhamhotels.com/content/dam/property-images/en-us/hr/au/others/torquay/16284/16284_pool%2014.jpg?downsize=700:*" },
-    { name: "Valamar", info: "Poreč", rabatt: "10% Nachlass nutzen", bild: "https://wevotravel.com/wp-content/uploads/2023/05/isabella-valamar-collection-resort-town-view-XL.jpg" }
+    { name: "Valamar", info: "Poreč", rabatt: "10% Nachlass nutzen", bild: "https://multimedia.valamar.com/mediagallery-dxp-production/Objekti_Hvar_Amicor_V4_gallery_amicor-resort-pools-sport-airview.jpg" }
   ])
 
   const handleKachelClick = (resort) => {
