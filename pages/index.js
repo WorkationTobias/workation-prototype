@@ -72,14 +72,40 @@ export default function Home() {
     <img src="/flags/01_WW_primary_lockup_white.png" alt="Workation World Logo" className="w-40" />
   </div>
   <nav className="space-y-2">
-    <button className={`block w-full text-left px-2 py-1 rounded ${activeTab === "antrag" ? "bg-blue-600" : "hover:bg-gray-700"}`} onClick={() => setActiveTab("antrag")}>Antrag stellen</button>
-    <button className={`block w-full text-left px-2 py-1 rounded ${activeTab === "meine-anfragen" ? "bg-blue-600" : "hover:bg-gray-700"}`} onClick={() => setActiveTab("meine-anfragen")}>Meine Anfragen</button>
-    <button className={`block w-full text-left px-2 py-1 rounded ${activeTab === "mein-profil" ? "bg-blue-600" : "hover:bg-gray-700"}`} onClick={() => setActiveTab("mein-profil")}>Mein Profil</button>
-    <button className={`block w-full text-left px-2 py-1 rounded ${activeTab === "policy" ? "bg-blue-600" : "hover:bg-gray-700"}`} onClick={() => setActiveTab("policy")}>Workation Policy</button>
-    <div className="border-t border-gray-600 my-2"></div>
-    <button className={`block w-full text-left px-2 py-1 rounded ${activeTab === "destinationen" ? "bg-blue-600" : "hover:bg-gray-700"}`} onClick={() => setActiveTab("destinationen")}>Meine Workation-Destinationen</button>
+    <button
+      className={`block w-full text-left px-2 py-1 rounded ${activeTab === "antrag" ? "bg-blue-600" : "hover:bg-gray-700"}`}
+      onClick={() => setActiveTab("antrag")}
+    >
+      Antrag stellen
+    </button>
+    <button
+      className={`block w-full text-left px-2 py-1 rounded ${activeTab === "meine-anfragen" ? "bg-blue-600" : "hover:bg-gray-700"}`}
+      onClick={() => setActiveTab("meine-anfragen")}
+    >
+      Meine Anfragen
+    </button>
+    <button
+      className={`block w-full text-left px-2 py-1 rounded ${activeTab === "mein-profil" ? "bg-blue-600" : "hover:bg-gray-700"}`}
+      onClick={() => setActiveTab("mein-profil")}
+    >
+      Mein Profil
+    </button>
+    <button
+      className={`block w-full text-left px-2 py-1 rounded ${activeTab === "policy" ? "bg-blue-600" : "hover:bg-gray-700"}`}
+      onClick={() => setActiveTab("policy")}
+    >
+      Workation Policy
+    </button>
+    <div className="border-t border-gray-600 my-2" />
+    <button
+      className={`block w-full text-left px-2 py-1 rounded ${activeTab === "destinationen" ? "bg-blue-600" : "hover:bg-gray-700"}`}
+      onClick={() => setActiveTab("destinationen")}
+    >
+      Meine Workation-Destinationen
+    </button>
   </nav>
 </aside>
+
       <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
         {activeTab === "antrag" && (
           <div className="space-y-4">
