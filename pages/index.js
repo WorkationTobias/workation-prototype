@@ -106,7 +106,7 @@ export default function Home() {
             <label className="block font-medium">Wie viele Tage haben Sie in den letzten 12 Monaten im Zielland verbracht?</label>
             <input type="number" className="w-full p-2 border rounded" value={form.tageVorher} onChange={(e) => setForm({ ...form, tageVorher: e.target.value })} />
             <label><input type="checkbox" checked={form.bestaetigung} onChange={(e) => setForm({ ...form, bestaetigung: e.target.checked })} /> Hiermit bestätige ich die Richtigkeit meiner Angaben</label>  
-            <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setSubmitted(true)}>Absenden</button>
+            <button className="block mt-4 bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setSubmitted(true)}>Absenden</button>
           </div>
         )}
 
