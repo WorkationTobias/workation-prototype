@@ -242,33 +242,24 @@ export default function Home() {
           </div>
         )}
 
-        {activeTab === "destinationen" && (
-          <div>
-            <h2 className="text-xl font-bold mb-4">Meine Workation-Destinationen</h2>
-            <div className="grid grid-cols-3 gap-6">
-              {destinationenDetails.map((d, i) => (
-                <div key={i} className="bg-white rounded shadow overflow-hidden cursor-pointer" onClick={() => handleKachelClick(d)}>
-                  <img src={d.bild} alt={d.name} className="w-full h-40 object-cover" />
-                  <div className="p-4">
-                    <h3 className="font-bold text-lg">{d.name}</h3>
-                    <p className="text-sm text-gray-600">{d.info}</p>
-                    <button className="mt-2 bg-orange-500 text-white px-3 py-1 text-sm rounded">{d.rabatt}</button>
-                    {d.scoring && (
-                      <div className="mt-3 text-sm text-gray-700">
-                        <p>⭐ Infrastruktur: {d.scoring[0]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Komfort: {d.scoring[1]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Freizeit: {d.scoring[2]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne von 5 möglichen Sternen</p>
-                        <p>⭐ Service: {d.scoring[4]} Sterne von 5 möglichen Sternen</p>
-                        <p className="mt-2 font-bold text-green-600">Dieser Partner ist mit dem Gütesiegel: WORKATION READY zertifziert</p>
-
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </main>
+        {destinationenDetails.map((d, i) => (
+  <div key={i} className="bg-white rounded shadow overflow-hidden cursor-pointer" onClick={() => handleKachelClick(d)}>
+    <img src={d.bild} alt={d.name} className="w-full h-40 object-cover" />
+    <div className="p-4">
+      <h3 className="font-bold text-lg">{d.name}</h3>
+      <p className="text-sm text-gray-600">{d.info}</p>
+      <button className="mt-2 bg-orange-500 text-white px-3 py-1 text-sm rounded">{d.rabatt}</button>
+      {d.scoring && (
+        <div className="mt-3 text-sm text-gray-700">
+          <p>⭐ Infrastruktur: {d.scoring[0]} Sterne von 5 möglichen Sternen</p>
+          <p>⭐ Komfort: {d.scoring[1]} Sterne von 5 möglichen Sternen</p>
+          <p>⭐ Freizeit: {d.scoring[2]} Sterne von 5 möglichen Sternen</p>
+          <p>⭐ Nachhaltigkeit: {d.scoring[3]} Sterne von 5 möglichen Sternen</p>
+          <p>⭐ Service: {d.scoring[4]} Sterne von 5 möglichen Sternen</p>
+          <p className="mt-2 font-bold text-green-600">Dieser Partner ist mit dem Gütesiegel: WORKATION READY zertifziert</p>
+        </div>
+      )}
     </div>
-  )
-}
+  </div>
+))}
+
