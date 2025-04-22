@@ -39,34 +39,31 @@ export default function Home() {
   ])
 
   const [profil, setProfil] = useState({
-    name: "",
+    vorUndNachname: "",
     staatsangehoerigkeit: "",
     zweiteStaatsangehoerigkeit: "",
     geschlecht: "",
     geburtsdatum: "",
     geburtsort: "",
-    strasse: "",
-    plz: "",
+    strasseUndHausnummer: "",
+    postleitzahl: "",
     stadt: "",
     land: "",
-    lohnabrechnung: "",
-    krankenkasse: "",
+    landDerLohnabrechnung: "",
     krankenversicherung: "",
-    svNummer: "",
-    beruf: "",
+    oeffentlichKrankenversicherung: "",
+    sozialversicherungsnummer: "",
+    berufsbezeichnung: "",
     abteilung: "",
-    eintritt: "",
-    vorgesetzte: "",
-    lokaleDienste: "",
-    vollmacht: "",
-    management: ""
+    eintrittsdatum: "",
+    emailadresseDesVorgesetzten: "",
   })
 
   const [policy, setPolicy] = useState({
     maxTage: 183,
-    enthalteneLaender: ["Aruba", "Afghanistan", "Angola"],
+    enthalteneLaender: ["Nur EU"],
     dokumente: [
-      { titel: "Allgemeine Betriebsvereinbarung", name: "WorkFlex - Terms & conditions.pdf", groesse: "197.36 kB", datum: "19.06.2024" },
+      { titel: "Allgemeine Betriebsvereinbarung", name: "Workation World - Terms & conditions.pdf", groesse: "197.36 kB", datum: "19.06.2024" },
       { titel: "Datenschutz im Ausland", name: "Data privacy and security.pdf", groesse: "124.1 kB", datum: "19.06.2024" },
       { titel: "Krankenversicherung", name: "Insurance policy.pdf", groesse: "121.31 kB", datum: "19.06.2024" }
     ]
