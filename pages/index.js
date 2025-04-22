@@ -124,7 +124,50 @@ export default function Home() {
         ) : activeTab === "antrag" ? (
           <div>
             <h2 className="text-xl font-bold mb-4">Workation-Antrag stellen</h2>
-            {/* Formularinhalte können hier folgen */}
+            <form className="space-y-4 max-w-lg">
+              <div>
+                <label className="block font-medium">Zielland</label>
+                <select className="w-full border px-2 py-1" value={form.land} onChange={e => setForm({ ...form, land: e.target.value })}>
+                  <option value="">Bitte wählen</option>
+                  {[
+                    "Kroatien", "Spanien", "Italien", "Portugal", "Griechenland", "Thailand", "Indonesien", "Mexiko",
+                    "Frankreich", "Türkei", "Zypern", "Ägypten", "Sri Lanka", "Vietnam", "Marokko", "Brasilien",
+                    "Kap Verde", "Dominikanische Republik", "Costa Rica", "Georgien", "Malta", "Montenegro", "Albanien", "Island",
+                    "Norwegen", "Schweden", "Finnland", "Estland", "Lettland", "Litauen", "Polen", "Tschechien", "Ungarn"
+                  ].map((l, i) => <option key={i} value={l}>{l}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="block font-medium">Ankunft</label>
+                <input type="date" className="w-full border px-2 py-1" value={form.start} onChange={e => setForm({ ...form, start: e.target.value })} />
+              </div>
+              <div>
+                <label className="block font-medium">Abreise</label>
+                <input type="date" className="w-full border px-2 py-1" value={form.ende} onChange={e => setForm({ ...form, ende: e.target.value })} />
+              </div>
+              <div>
+                <label className="block font-medium">Wie viele Tage werden Sie arbeiten?</label>
+                <input type="number" className="w-full border px-2 py-1" value={form.arbeitstage} onChange={e => setForm({ ...form, arbeitstage: parseInt(e.target.value) || 0 })} />
+              </div>
+              <div>
+                <label className="block font-medium">Sind Sie im Zielland steuerpflichtig?</label>
+                <label><input type="radio" name="steuer" value="ja" checked={form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: true })} /> Ja</label>
+                <label className="ml-4"><input type="radio" name="steuer" value="nein" checked={!form.steuerpflicht} onChange={() => setForm({ ...form, steuerpflicht: false })} /> Nein</label>
+              </div>
+              <div>
+                <label className="block font-medium">Haben Sie im Zielland ein Bankkonto?</label>
+                <label><input type="radio" name="bank" value="ja" checked={form.bankkonto} onChange={() => setForm({ ...form, bankkonto: true })} /> Ja</label>
+                <label className="ml-4"><input type="radio" name="bank" value="nein" checked={!form.bankkonto} onChange={() => setForm({ ...form, bankkonto: false })} /> Nein</label>
+              </div>
+              <div>
+                <label className="block font-medium">Wie viele Tage haben Sie in den letzten 12 Monaten im Zielland verbracht?</label>
+                <input type="number" className="w-full border px-2 py-1" value={form.tageVorher} onChange={e => setForm({ ...form, tageVorher: parseInt(e.target.value) || 0 })} />
+              </div>
+              <div>
+                <label><input type="checkbox" checked={form.bestaetigung} onChange={e => setForm({ ...form, bestaetigung: e.target.checked })} /> Hiermit bestätige ich die Richtigkeit meiner Angaben</label>
+              </div>
+              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Absenden</button>
+            </form>
           </div>
         ) : activeTab === "meine-anfragen" ? (
           <div>
@@ -159,12 +202,17 @@ export default function Home() {
         ) : activeTab === "mein-profil" ? (
           <div>
             <h2 className="text-xl font-bold mb-4">Mein Profil</h2>
-            {/* Profilbearbeitung und Felder folgen */}
+            <p className="text-gray-600">Hier können Sie Ihre persönlichen Informationen bearbeiten. (Platzhalter – Eingabefelder folgen)</p>
           </div>
         ) : activeTab === "policy" ? (
           <div>
             <h2 className="text-xl font-bold mb-4">Workation Policy</h2>
-            {/* Policy Inhalte hier */}
+            <p className="text-gray-600">Ihre Unternehmensrichtlinie erlaubt bis zu 183 Arbeitstage im Ausland pro Kalenderjahr.</p>
+            <p className="text-sm mt-2">Enthaltene Länder: Aruba, Afghanistan, Angola uvm.</p>
+            <p className="text-xs text-red-500 mt-2">Rot markierte Länder gelten als nicht empfohlen.</p>
+            <p className="mt-4 text-sm">Betriebsvereinbarung: WorkFlex - Terms & Conditions</p>
+            <p className="text-sm">Datenschutz im Ausland: Data Privacy & Security</p>
+            <p className="text-sm">Krankenversicherung: Insurance Policy</p>
           </div>
         ) : null}
       </main>
